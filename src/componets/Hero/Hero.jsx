@@ -7,7 +7,7 @@ function Hero() {
         <div className="hero d-flex al-center">
             <div className="hero-text">
                 <h1>Desenvolvedor Full Stack</h1>
-                <p>Desenvolvedor Full Stack com experiência em React, Node.js e MongoDB. Apaixonado por criar soluções inovadoras e eficientes para desafios complexos. Com um histórico comprovado de entrega de projetos de alta qualidade, estou sempre em busca de novas oportunidades para crescer e contribuir para o sucesso da equipe.</p>
+                <p>Desenvolvedor Full Stack especializado na criação de aplicações completas e eficientes. Possuo sólida vivência no desenvolvimento de interfaces modernas com ecossistema JavaScript/React, além de construir serviços e APIs robustas utilizando Python, Java e Node.js. Com foco em resolução de problemas e entrega de projetos de alta qualidade, estou sempre em busca de projetos desafiadores para contribuir com o sucesso da equipe.</p>
                 <Link>
                     <Button buttonStyle="secondary" arrow>
                         Saiba mais
