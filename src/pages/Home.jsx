@@ -6,8 +6,7 @@ import ProjetcsList from "../componets/ProjetcsList/ProjetcsList";
 function Home() {
     return (
         <>
-            <Header />            
-            
+            <Header />          
             <div className="container">
                 <Hero />
                 <ProjetcsList />

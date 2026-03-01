@@ -11,7 +11,7 @@ function Header() {
                     <Link to="/"><img src={Logo} alt="Logo Jorge" /></Link>
                     <nav>
                     <ul className="d-flex">
-                        <li><Link to="/home">Inicio</Link></li>
+                        <li><Link to="/">Inicio</Link></li>
                         <li><Link to="/about">Sobre mim</Link></li>
                         <li><Link to="/Projects">Projetos</Link></li>
                         <li><Link to="/contact">Contato</Link></li>
