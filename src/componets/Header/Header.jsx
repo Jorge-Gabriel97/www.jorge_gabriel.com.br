@@ -3,13 +3,22 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import "./Header.css";
 
+//Components
+import Button from '../Button/Button';
+
 function Header() {
     return (
         <header>
             <div className="container">
-                <div className="al-center d-flex jc-space-between">                    
+                <div className="al-center d-flex jc-space-between">
                     <Link to="/"><img src={Logo} alt="Logo Jorge" /></Link>
-                    <nav>
+                    <div className="mobile-menu">
+                        <Button buttonStyle="secondary">
+                            Menu
+                        </Button>
+                    </div>
+                </div>
+                <nav>
                     <ul className="d-flex">
                         <li><Link to="/">Inicio</Link></li>
                         <li><Link to="/about">Sobre mim</Link></li>
@@ -17,9 +26,8 @@ function Header() {
                         <li><Link to="/contact">Contato</Link></li>
                     </ul>
                 </nav>
-                </div>                
             </div>
-        </header>
+        </header >
     )
 }
 
