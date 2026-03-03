@@ -12,14 +12,11 @@ function AboutDescription() {
                     <h2>Desenvolvedor Full Stack</h2>
 
                     <p className="primary-color description-text">
-                        Sou estudante de Análise e Desenvolvimento de Sistemas com foco em Desenvolvimento Full Stack.
-                        Minha paixão é unir o poder do back-end com o design do front-end para criar soluções completas.
-                        No Front-End, construo interfaces funcionais e responsivas utilizando HTML, CSS e JavaScript.
-                        Já no Back-End e além, utilizo Python para desenvolvimento web, automação de processos,
-                        análise de dados e exploração de fundamentos de IA. Minha experiência prévia com suporte técnico
-                        afiou minha capacidade analítica para resolver problemas reais, diagnosticar erros (como no DOM
-                        ou em integrações de APIs) e escrever código limpo (Clean Code). Sou movido pelo aprendizado
-                        contínuo e meu objetivo é atuar em projetos desafiadores, construindo soluções eficientes e escaláveis.
+                        Como graduando de Análise e Desenvolvimento de Sistemas, foco minha trajetória na construção de softwares eficientes, aplicando conceitos de engenharia e Clean Code em cada linha de código.
+                        Ecossistema Front-End: Construo interfaces dinâmicas e de alta performance utilizando React e TypeScript, garantindo tipagem segura e componentes reutilizáveis.
+                        Arquitetura Back-End: Desenvolvo APIs robustas e escaláveis com Java (Spring Boot) e Node.js, além de criar automações inteligentes e análise de dados com Python.
+                        Persistência e Infraestrutura: Experiência prática na modelagem de bancos de dados SQL (PostgreSQL, MySQL) e NoSQL (MongoDB), utilizando Docker e Git para garantir ambientes de desenvolvimento modernos e controle de versão rigoroso.
+                        Minha bagagem técnica me permite transitar por todo o ciclo de vida do software, desde o diagnóstico preciso de erros em integrações de APIs até o deploy de soluções completas e seguras.
                     </p>
 
                     {/* === NOVA SEÇÃO DE ÍCONES (TECH STACK) === */}
