@@ -8,12 +8,16 @@ function ContactForm() {
         message: ""
     });
 
-    // 1. Follow the Data Flow: Calculamos a validação direto no fluxo, sem precisar de useEffect!
+    // Removido o useState do isFormValid, pois ele é calculado abaixo
+    const [formSubmitLoading, setFormSubmitLoading] = useState(false);
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
     };
 
+    // "Follow the Data Flow": Validação calculada a cada renderização
     const isFormValid =
         formData.name.trim() !== "" &&
         isValidEmail(formData.email) &&
@@ -28,20 +32,43 @@ function ContactForm() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Impede a página de recarregar
+        e.preventDefault();
+
         if (isFormValid) {
-            setFormData({ name: "", email: "", message: "" });
+            setFormSubmitLoading(true);
+            try {
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        ...formData,
+                        access_key: '842457cc-9b94-42a5-8f25-cc3583e36c83'
+                    })
+                });
+                
+                if (response.ok) {
+                    setFormSubmitted(true);
+                    setFormData({ name: "", email: "", message: "" });
+                    alert("Mensagem enviada com sucesso!");
+                } else {
+                    alert('Erro ao enviar formulário: ' + response.statusText);
+                }
+            }
+            catch (error) {
+                alert("Erro ao enviar formulário: " + error.message);
+            }
+            finally {
+                setFormSubmitLoading(false);
+            }
         }
     };
 
     return (
         <div className="container">
             <div className="contact-form d-flex fd-column al-center">
-
                 <div className="cta-box">
                     <h2>Gostou do que viu?</h2>
-                    <p>Vamos construir algo incrível juntos. Preencha o formulário abaixo ou, se preferir, me mande um e-mail direto.</p>
-
+                    <p>Vamos construir algo incrível juntos.</p>
 
                     <form className="form-container" onSubmit={handleSubmit}>
                         <input
@@ -75,11 +102,16 @@ function ContactForm() {
                         <button
                             type="submit"
                             className="cta-button"
-                            disabled={!isFormValid}
-                            style={{ opacity: isFormValid ? 1 : 0.5, cursor: isFormValid ? 'pointer' : 'not-allowed' }}                        >
-                            Enviar Mensagem ➔
+                            disabled={!isFormValid || formSubmitLoading}
+                            style={{ 
+                                opacity: isFormValid ? 1 : 0.5, 
+                                cursor: isFormValid ? 'pointer' : 'not-allowed' 
+                            }}
+                        >
+                            {formSubmitLoading ? "Enviando..." : "Enviar Mensagem ➔"}
                         </button>
                     </form>
+                    {formSubmitted && <p style={{color: 'green', marginTop: '10px'}}>Obrigado! Entrarei em contato em breve.</p>}
                 </div>
             </div>
         </div>
