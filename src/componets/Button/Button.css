@@ -1,13 +1,21 @@
-.button{
+/* =========================================
+   BOTÃO BASE (Desktop)
+   ========================================= */
+.button {
     border-radius: 18px;
     border: none;
     column-gap: 10px;
     cursor: pointer;
+    
+    /* Garante que texto e ícones fiquem centralizados */
     display: flex;
+    justify-content: center;
+    align-items: center;
+    
     font-size: 18px;
     font-weight: 600;
     padding: 25px 50px;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease; /* Mudou para 'all' para animar bordas e cores no Dark Mode */
 }
 
 /* Primary Button */
@@ -43,9 +51,80 @@
 }
 
 /* Disabled Button */
-.button:disabled, .button:disabled>:hover {
+.button:disabled, .button:disabled:hover {
     background-color: #ccc;   
     color: #666;
     pointer-events: none;
+    cursor: not-allowed;
 }
 
+/* =========================================
+   📱 RESPONSIVIDADE (BOTÕES)
+   ========================================= */
+
+/* Laptops e Tablets (até 1024px) */
+@media (max-width: 1024px) {
+    .button {
+        padding: 20px 40px;
+        font-size: 17px;
+    }
+}
+
+/* Tablets em pé e Celulares deitados (até 768px) */
+@media (max-width: 768px) {
+    .button {
+        padding: 16px 32px;
+        font-size: 16px;
+        border-radius: 14px; /* Arredondamento um pouco menor para combinar com o botão menor */
+    }
+}
+
+/* Celulares Padrão (até 568px) */
+@media (max-width: 568px) {
+    .button {
+        padding: 14px 24px;
+        font-size: 15px;
+    }
+}
+
+/* Celulares Bem Pequenos (até 375px) */
+@media (max-width: 375px) {
+    .button {
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+}
+
+/* =========================================
+   🌙 OVERRIDES DO DARK MODE
+   ========================================= */
+
+/* Ajusta o azul primário para o tom que estamos usando no resto do dark mode */
+.dark-mode .button.primary {
+    background-color: #3b82f6; 
+}
+
+.dark-mode .button.primary:hover {
+    background-color: #2563eb;
+}
+
+/* Um botão preto no fundo escuro some, então clareamos o secondary para um cinza azulado */
+.dark-mode .button.secondary {
+    background-color: #334155; 
+}
+
+.dark-mode .button.secondary:hover {
+    background-color: #475569;
+}
+
+/* O outline perde o fundo branco e ganha o azul padrão do dark mode */
+.dark-mode .button.outline {
+    background-color: transparent;
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+.dark-mode .button.outline:hover {
+    background-color: #3b82f6;
+    color: #ffffff;
+}

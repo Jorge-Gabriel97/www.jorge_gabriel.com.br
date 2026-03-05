@@ -1,12 +1,21 @@
+/* =========================================
+   FOOTER BASE (Desktop)
+   ========================================= */
 footer {
     background-color: #f8f9fa;
-    padding: 60px 0 20px 0;
-    transition: background-color 0.3s ease; /* Transição suave do fundo */
+    padding: 60px 5% 20px 5%; /* % para garantir margens iguais em telas grandes */
+    transition: background-color 0.3s ease; 
 }
 
 .footer-content {
+    display: flex; /* Faltava isso para garantir as 3 colunas lado a lado! */
+    justify-content: space-between;
     align-items: flex-start;
+    flex-wrap: wrap; /* Permite quebrar linha se a tela encolher */
+    gap: 40px;
     margin-bottom: 40px;
+    max-width: 1200px; /* Impede que o rodapé estique infinitamente em monitores Ultrawide */
+    margin-inline: auto; /* Centraliza o miolo do footer */
 }
 
 .footer-logo-col {
@@ -30,6 +39,11 @@ footer {
     transition: color 0.3s ease;
 }
 
+.social-media {
+    display: flex;
+    gap: 15px;
+}
+
 .social-media img {
     width: 32px;
     height: 32px;
@@ -47,7 +61,7 @@ footer {
     font-size: 20px;
     font-weight: 600;
     margin: 0 0 20px 0;
-    transition: color 0.3s ease; /* Transição da cor do título */
+    transition: color 0.3s ease; 
 }
 
 .footer-pages-col ul {
@@ -63,6 +77,7 @@ footer {
     color: #555555;
     font-size: 16px;
     transition: color 0.3s ease;
+    text-decoration: none;
 }
 
 .footer-pages-col a:hover {
@@ -71,14 +86,15 @@ footer {
 
 .footer-contact-col p {
     font-size: 16px;
-    margin: 0;
+    margin: 0 0 10px 0;
     transition: color 0.3s ease;
 }
 
 .footer-bottom {
     border-top: 1px solid #EAEAEA;
     padding-top: 20px;
-    transition: border-color 0.3s ease; /* Transição da linha divisória */
+    text-align: center; /* Centraliza os direitos autorais */
+    transition: border-color 0.3s ease; 
 }
 
 .footer-bottom p {
@@ -86,13 +102,52 @@ footer {
     transition: color 0.3s ease;
 }
 
+/* =========================================
+   📱 RESPONSIVIDADE (FOOTER)
+   ========================================= */
+
+/* Tablets (até 1024px) */
+@media (max-width: 1024px) {
+    .footer-content {
+        gap: 30px;
+    }
+}
+
+/* Celulares e Tablets em pé (até 768px) */
 @media (max-width: 768px) {
     .footer-content {
         flex-direction: column;
-        gap: 40px;
+        align-items: center; /* Centraliza todas as colunas no mobile */
+        text-align: center;  /* Centraliza o texto */
+        gap: 50px;
     }
+    
     .footer-logo-col {
         max-width: 100%;
+        align-items: center; /* Traz a logo e os ícones sociais pro meio */
+    }
+
+    .footer-pages-col ul {
+        align-items: center;
+    }
+}
+
+/* Celulares padrão e pequenos (até 568px) */
+@media (max-width: 568px) {
+    footer {
+        padding: 40px 5% 15px 5%;
+    }
+    
+    .footer-pages-col h3,
+    .footer-contact-col h3 {
+        font-size: 18px; /* Títulos levemente menores no mobile */
+    }
+
+    .footer-logo-col p,
+    .footer-pages-col a,
+    .footer-contact-col p,
+    .footer-bottom p {
+        font-size: 15px; /* Fonte ajustada para leitura no celular */
     }
 }
 
@@ -100,31 +155,26 @@ footer {
    🌙 OVERRIDES DO DARK MODE (FOOTER)
    ========================================= */
 
-/* Fundo do rodapé */
 .dark-mode footer {
-    background-color: #1e293b; /* Mesmo tom elegante do Header */
+    background-color: #1e293b; 
 }
 
-/* Títulos das colunas (Páginas, Contato) */
 .dark-mode .footer-pages-col h3,
 .dark-mode .footer-contact-col h3 {
-    color: #f8fafc; /* Branco gelo */
+    color: #f8fafc; 
 }
 
-/* Textos descritivos e links */
 .dark-mode .footer-logo-col p,
 .dark-mode .footer-contact-col p,
 .dark-mode .footer-bottom p,
 .dark-mode .footer-pages-col a {
-    color: #94a3b8; /* Cinza claro para não cansar a vista */
+    color: #94a3b8; 
 }
 
-/* Mantém o destaque azul no hover dos links */
 .dark-mode .footer-pages-col a:hover {
     color: #3b82f6; 
 }
 
-/* Linha divisória do copyright */
 .dark-mode .footer-bottom {
-    border-top: 1px solid #334155; /* Linha mais escura para combinar com o fundo */
+    border-top: 1px solid #334155; 
 }

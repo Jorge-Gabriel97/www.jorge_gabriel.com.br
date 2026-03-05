@@ -1,10 +1,18 @@
+/* =========================================
+   CONTÊINER PRINCIPAL
+   ========================================= */
 .contact-form {
+    display: flex;
+    justify-content: center; /* Garante que o card fique no meio da tela */
+    align-items: center;
     margin: 100px auto; 
     width: 100%;
     padding: 0 20px;
 }
 
-/* O Card de Destaque (Light Mode - Padrão) */
+/* =========================================
+   O CARD DE DESTAQUE (Light Mode)
+   ========================================= */
 .cta-box {
     background-color: #f8f9fa; 
     padding: 50px;
@@ -14,7 +22,7 @@
     width: 100%;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
     border: 1px solid #eaeaea;
-    transition: all 0.3s ease; /* Transição suave para o dark mode */
+    transition: all 0.3s ease; 
 }
 
 .cta-box h2 {
@@ -33,7 +41,9 @@
     transition: color 0.3s ease;
 }
 
-/* --- Estilização dos Campos do Formulário --- */
+/* =========================================
+   CAMPOS DO FORMULÁRIO E BOTÃO
+   ========================================= */
 .form-container {
     display: flex;
     flex-direction: column;
@@ -49,10 +59,9 @@
     font-family: inherit;
     transition: all 0.3s ease;
     background-color: #fff;
-    color: #333; /* Adicionado para garantir a cor da fonte ao digitar */
+    color: #333; 
 }
 
-/* Efeito ao clicar no campo de texto */
 .form-input:focus, .form-textarea:focus {
     outline: none;
     border-color: #0C70F2; 
@@ -63,7 +72,6 @@
     resize: vertical; 
 }
 
-/* Botão de Enviar (Fica igual nos dois modos) */
 .cta-button {
     background-color: #0C70F2;
     color: white;
@@ -83,50 +91,97 @@
     box-shadow: 0 5px 15px rgba(12, 112, 242, 0.3);
 }
 
-/* Responsividade para Celulares */
+/* =========================================
+   📱 RESPONSIVIDADE (CONTATO)
+   ========================================= */
+
+/* Tablets (até 1024px) */
+@media (max-width: 1024px) {
+    .cta-box {
+        padding: 40px;
+    }
+    .cta-box h2 {
+        font-size: 32px;
+    }
+}
+
+/* Celulares e Tablets em pé (até 768px) */
 @media (max-width: 768px) {
+    .contact-form {
+        margin: 80px auto; /* Diminui a margem externa no mobile */
+    }
     .cta-box {
         padding: 30px 20px;
     }
     .cta-box h2 {
         font-size: 28px;
     }
+    .cta-box p {
+        font-size: 16px;
+        margin-bottom: 30px;
+    }
+}
+
+/* Celulares Padrão (até 568px) */
+@media (max-width: 568px) {
+    .contact-form {
+        margin: 50px auto; 
+        padding: 0 15px;
+    }
+    .cta-box {
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+    .cta-box h2 {
+        font-size: 24px;
+    }
+    /* Diminui um pouco o botão e os inputs para não ocupar a tela toda do celular */
+    .form-input, .form-textarea, .cta-button {
+        padding: 14px;
+        font-size: 16px; 
+    }
+}
+
+/* Celulares Bem Pequenos (até 375px) */
+@media (max-width: 375px) {
+    .cta-box h2 {
+        font-size: 22px;
+    }
+    .cta-box p {
+        font-size: 15px;
+    }
 }
 
 /* =========================================
    🌙 OVERRIDES DO DARK MODE
-   Estas regras só ativam se a classe dark-mode existir no pai
    ========================================= */
 
 .dark-mode .cta-box {
-    background-color: #1e293b; /* Fundo cinza escuro elegante */
-    border-color: #334155;     /* Borda sutil */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4); /* Sombra mais forte no escuro */
+    background-color: #1e293b; 
+    border-color: #334155;    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4); 
 }
 
 .dark-mode .cta-box h2 {
-    color: #f8fafc; /* Branco gelo para o título */
+    color: #f8fafc; 
 }
 
 .dark-mode .cta-box p {
-    color: #94a3b8; /* Cinza claro para o texto */
+    color: #94a3b8; 
 }
 
-/* Ajuste das caixas de texto do formulário no escuro */
 .dark-mode .form-input, 
 .dark-mode .form-textarea {
-    background-color: #0f172a; /* Fundo mais escuro que o card (dá profundidade) */
+    background-color: #0f172a; 
     border-color: #475569;
-    color: #f8fafc; /* Texto digitado fica branco */
+    color: #f8fafc; 
 }
 
-/* Ajusta a cor do texto temporário (Placeholder) */
 .dark-mode .form-input::placeholder, 
 .dark-mode .form-textarea::placeholder {
     color: #64748b;
 }
 
-/* Efeito focus no dark mode (Brilha um pouco diferente) */
 .dark-mode .form-input:focus, 
 .dark-mode .form-textarea:focus {
     border-color: #3b82f6;

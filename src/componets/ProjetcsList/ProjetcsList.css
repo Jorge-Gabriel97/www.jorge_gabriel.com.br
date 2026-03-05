@@ -1,10 +1,15 @@
+/* =========================================
+   SEÇÃO DE PROJETOS BASE (Desktop)
+   ========================================= */
 .projetcs-section {
-    margin: 150px 0;
+    margin: 150px 5%; /* O 5% garante que o grid nunca encoste nas laterais */
     text-align: center;
+    max-width: 1200px; /* Trava o crescimento máximo em monitores gigantes */
+    margin-inline: auto; /* Centraliza a seção na tela */
 }
 
 .projetcs-hero {
-    margin: 0 auto 100px auto;
+    margin: 0 auto 80px auto; /* Reduzi um pouco a margem inferior */
     max-width: 767px;
 }
 
@@ -14,45 +19,51 @@
 }
 
 .projetcs-hero p { 
-    font-size: 22px; 
-    margin: 10px 0 0 0; 
+    font-size: 20px; 
+    margin: 15px 0 0 0; 
+    line-height: 1.5;
     transition: color 0.3s ease; 
 }
 
 .projetcs-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 50px;
-    align-items: start; /* Impede que os cards estiquem a linha inteira */
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas por padrão */
+    gap: 40px;
+    align-items: start; 
 }
 
+/* =========================================
+   O CARD DE PROJETO
+   ========================================= */
 .projetcs-card {
-    height: max-content; /* O card só cresce o necessário para o seu texto */
+    height: max-content; 
+    display: flex;
+    flex-direction: column; /* Garante que os elementos internos empilhem certo */
     justify-content: flex-start; 
     padding: 20px;
     width: 100%;
-    background-color: #fff; /* Fundo branco no tema claro */
+    background-color: #fff; 
     border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra super sutil e moderna */
-    transition: all 0.3s ease; /* Transição mágica para o modo escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); 
+    transition: all 0.3s ease; 
 }
 
 .projetcs-card .thumb {
     background-position: center;
     background-size: cover;
-    border-radius: 20px; 
+    border-radius: 15px; /* Arredondamento um pouco menor por estar dentro do card */
     height: 220px; 
     width: 100%;
 }
 
 .projetcs-card h3 {
-    font-size: 25px;
+    font-size: 24px;
     margin: 20px 0 10px 0;
     color: #000;
+    text-align: left; /* Garante que o título do projeto alinhe com o texto */
     transition: color 0.3s ease;
 }
 
-/* --- Botão Ver Detalhes (Estilo Tema Claro) --- */
 .projetcs-card .desc-btn {
     background: transparent;
     border: 1px solid #000;
@@ -63,6 +74,7 @@
     font-weight: 600;
     cursor: pointer;
     margin-bottom: 10px;
+    align-self: flex-start; /* Joga o botão para a esquerda */
     transition: all 0.3s ease;
 }
 
@@ -72,20 +84,21 @@
 }
 
 .projetcs-card .repo-description {
-    font-size: 16px;
+    font-size: 15px;
     margin: 10px 0;
     text-align: left;
     color: #333;
-    line-height: 1.4;
+    line-height: 1.5;
     transition: color 0.3s ease;
 }
 
-/* --- Link do Repositório --- */
 .projetcs-card .repo-link {
-    margin-top: 15px; 
+    margin-top: auto; /* Empurra o link sempre para o fundo do card */
+    padding-top: 15px;
     color: #0C70F2; 
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
+    text-align: left;
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -94,48 +107,82 @@
     text-decoration: underline;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .projetcs-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 568px) {
-    .projetcs-grid { grid-template-columns: 1fr; }
-}
-
-
 /* =========================================
-   🌙 OVERRIDES DO DARK MODE (CARDS DE PROJETOS)
+   📱 RESPONSIVIDADE (PROJETOS)
    ========================================= */
 
-/* Título e texto principal da seção */
-.dark-mode .projetcs-hero h2 {
-    color: #f8fafc;
-}
-.dark-mode .projetcs-hero p {
-    color: #94a3b8;
+/* Laptops e Monitores Menores (até 1200px) */
+@media (max-width: 1200px) {
+    .projetcs-grid { 
+        grid-template-columns: repeat(3, 1fr); /* Cai para 3 colunas */
+        gap: 30px; 
+    }
 }
 
-/* O fundo do card */
+/* Tablets (até 1024px) */
+@media (max-width: 1024px) {
+    .projetcs-section { margin: 100px 5%; }
+    .projetcs-hero h2 { font-size: 42px; }
+    .projetcs-grid { 
+        grid-template-columns: repeat(2, 1fr); /* Cai para 2 colunas */
+    }
+}
+
+/* Tablets em pé e Celulares deitados (até 768px) */
+@media (max-width: 768px) {
+    .projetcs-section { margin: 80px 5%; }
+    .projetcs-hero { margin-bottom: 50px; }
+    .projetcs-hero h2 { font-size: 36px; }
+    .projetcs-hero p { font-size: 18px; }
+    .projetcs-grid { gap: 20px; }
+}
+
+/* Celulares Padrão (até 568px) */
+@media (max-width: 568px) {
+    .projetcs-section { margin: 60px 5%; }
+    .projetcs-hero h2 { font-size: 30px; }
+    .projetcs-hero p { font-size: 16px; }
+    
+    .projetcs-grid { 
+        grid-template-columns: 1fr; /* 1 coluna ocupando tudo */
+    }
+    
+    .projetcs-card {
+        padding: 15px;
+    }
+    
+    .projetcs-card .thumb {
+        height: 240px; /* Imagem fica com uma altura imponente no mobile */
+    }
+}
+
+/* Celulares Bem Pequenos (até 375px) */
+@media (max-width: 375px) {
+    .projetcs-hero h2 { font-size: 26px; }
+    .projetcs-card .thumb { height: 200px; }
+    .projetcs-card h3 { font-size: 22px; }
+}
+
+/* =========================================
+   🌙 OVERRIDES DO DARK MODE
+   ========================================= */
+
+.dark-mode .projetcs-hero h2 { color: #f8fafc; }
+.dark-mode .projetcs-hero p { color: #94a3b8; }
+
 .dark-mode .projetcs-card {
-    background-color: #1e293b; /* Aquele cinza azulado profissional */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Sombra mais intensa no escuro */
+    background-color: #1e293b; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); 
 }
 
-/* Títulos e descrições dos repositórios */
-.dark-mode .projetcs-card h3 {
-    color: #f8fafc;
-}
-.dark-mode .projetcs-card .repo-description {
-    color: #94a3b8;
-}
+.dark-mode .projetcs-card h3 { color: #f8fafc; }
+.dark-mode .projetcs-card .repo-description { color: #94a3b8; }
 
-/* Botão "Ver Detalhes" no modo escuro */
 .dark-mode .projetcs-card .desc-btn {
     border-color: #f8fafc;
     color: #f8fafc;
 }
 .dark-mode .projetcs-card .desc-btn:hover {
     background-color: #f8fafc;
-    color: #1e293b; /* Ao passar o mouse, fundo branco e texto escuro */
+    color: #1e293b; 
 }

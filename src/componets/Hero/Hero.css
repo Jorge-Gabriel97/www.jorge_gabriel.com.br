@@ -1,18 +1,26 @@
+/* =========================================
+   HERO (Padrão - Desktop)
+   ========================================= */
 .hero {
     background-image: url("/Hero.png");
     background-size: cover;
     background-position: center;
     border-radius: 70px;
-    height: 708px;
+    min-height: 708px; /* Trocamos height por min-height para o celular não cortar a imagem */
     padding: 50px;
-    /* Adicionamos uma transição suave para não dar um "susto" na troca de tema */
+    
+    /* Flexbox para centralizar o texto verticalmente sempre */
+    display: flex;
+    align-items: center; 
+    
     transition: background-image 0.4s ease-in-out; 
 }
 
 .hero h1 {
     font-size: 65px;
     line-height: 125%;
-    color: #111; /* Garantimos uma cor escura e forte no modo claro */
+    color: #111; 
+    margin-bottom: 15px; /* Um respiro entre o título e o texto */
     transition: color 0.3s ease;
 }
 
@@ -20,20 +28,71 @@
     width: 40%;
 }
 
-/* Adicionei essa classe para o seu parágrafo do Hero, caso você queira controlar a transição dele também */
 .hero-text p {
     color: #333; 
+    font-size: 18px;
     transition: color 0.3s ease;
 }
 
-@media  (max-width: 768px) {
-    .hero-text{
-        width: 100%;
+/* =========================================
+   📱 RESPONSIVIDADE (HERO)
+   ========================================= */
+
+/* Laptops menores e Tablets deitados (até 1024px) */
+@media (max-width: 1024px) {
+    .hero {
+        min-height: 600px;
+        padding: 40px;
+        border-radius: 50px;
+    }
+    .hero-text {
+        width: 60%; /* Dá mais espaço para o texto */
+    }
+    .hero h1 {
+        font-size: 55px;
     }
 }
+
+/* Tablets em pé e Celulares deitados (até 768px) */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 500px;
+        padding: 30px;
+        border-radius: 40px;
+    }
+    .hero-text {
+        width: 100%; /* Texto ocupa a tela toda */
+        text-align: center; /* Centraliza tudo no mobile */
+    }
+    .hero h1 {
+        font-size: 45px;
+    }
+}
+
+/* Celulares Padrão (até 568px) */
 @media (max-width: 568px) {
-    .hero h1{
-        font-size: 50px;
+    .hero {
+        min-height: 400px;
+        padding: 20px;
+        border-radius: 30px; 
+    }
+    .hero h1 {
+        font-size: 38px;
+    }
+    .hero-text p {
+        font-size: 16px;
+    }
+}
+
+/* Celulares Pequenos (até 375px - ex: iPhone SE) */
+@media (max-width: 375px) {
+    .hero {
+        min-height: 350px;
+        padding: 15px;
+        border-radius: 20px;
+    }
+    .hero h1 {
+        font-size: 32px;
     }
 }
 
@@ -42,15 +101,14 @@
    ========================================= */
 
 .dark-mode .hero {
-    /* O Pulo do Gato: Mantém a url(), mas adiciona um gradiente escuro (rgba) por cima da imagem! */
     background-image: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url("/Hero.png");
 }
 
 .dark-mode .hero h1 {
-    color: #ffffff; /* Texto branco no fundo escurecido */
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Uma sombra leve para desgrudar o texto do fundo */
+    color: #ffffff; 
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); 
 }
 
 .dark-mode .hero-text p {
-    color: #cbd5e1; /* Um cinza bem clarinho para o texto de apoio */
+    color: #cbd5e1; 
 }

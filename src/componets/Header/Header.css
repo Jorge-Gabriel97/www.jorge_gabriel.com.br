@@ -1,20 +1,37 @@
-/* --- Header.css --- */
-
+/* =========================================
+   HEADER BASE (Desktop)
+   ========================================= */
 header {
-    background-color: #f8f9fa; /* Padronizado com a cor do rodapé */
-    padding: 20px 0; 
-    transition: background-color 0.3s ease; /* Transição suave para o Dark Mode */
+    background-color: #f8f9fa; 
+    padding: 20px 5%; /* Uso de % no padding lateral para respirar melhor nas bordas */
+    transition: background-color 0.3s ease; 
+    
+    /* Flexbox para alinhar Logo (esquerda) e Menu (direita) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-header ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    gap: 40px; 
+header img {
+    height: 60px;
+    width: 60px; 
+    border-radius: 50%; 
+    object-fit: cover; 
 }
 
 nav {
     display: flex;
+    align-items: center; /* Alinha os links com o botão de tema */
+    gap: 20px;
+}
+
+header ul {
+    display: flex; /* Coloca os itens da lista lado a lado */
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 40px; 
 }
 
 nav a {
@@ -32,33 +49,40 @@ nav a:hover {
     display: none;    
 }
 
-header img {
-    height: 60px;
-    width: 60px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-}
+/* =========================================
+   📱 RESPONSIVIDADE (Tablets e Celulares)
+   ========================================= */
 
+/* Tablets e Laptops Menores (até 768px) */
 @media (max-width: 768px) {
-    
+    header {
+        padding: 15px 5%;
+    }
+
+    header img {
+        height: 50px;
+        width: 50px;
+    }
+
     .mobile-menu {
         display: block; 
+        cursor: pointer;
+        z-index: 11; /* Garante que o ícone do hambúrguer fique acima de tudo */
     }
     
     nav {
         background-color: #1D1D1D;
         border-left: 10px solid #333;
         flex-direction: column;
-        align-items: end; 
+        align-items: flex-end; /* Alinha o conteúdo à direita */
         height: 100vh; 
-        padding: 37px;
+        padding: 40px 30px;
         position: fixed;
         right: 0;
         top: 0;
-        width: 50vw; 
+        width: 50vw; /* Ocupa metade da tela no Tablet */
         z-index: 10; 
         
-        display: flex; 
         transform: translateX(100%);
         transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out; 
         box-shadow: none; 
@@ -72,25 +96,54 @@ header img {
     nav ul {
         flex-direction: column;
         width: 100%;
+        align-items: flex-end; /* Links alinhados à direita no mobile */
+        gap: 0;
     }
 
     nav ul li {
-        display: flex;
+        width: 100%;
     }
 
     nav a {
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
         color: white;
         font-size: 20px;
         margin: 0 0 10px 0;
-        padding: 12px;
+        padding: 15px 0;
         text-decoration: none;
+        display: block;
+        text-align: right; /* Fica mais elegante no menu lateral */
         width: 100%;
     }
 }
 
+/* Celulares Padrão (até 568px) */
+@media (max-width: 568px) {
+    nav {
+        width: 75vw; /* Ocupa mais espaço, pois a tela do celular é fina */
+        padding: 30px 20px;
+    }
+    
+    nav.open {
+        box-shadow: -100vw 0px 0px 0px rgba(0, 0, 0, 0.75); /* Escurece o resto da tela inteira */
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+}
+
+/* Celulares Bem Pequenos (até 375px) */
+@media (max-width: 375px) {
+    nav {
+        width: 100vw; /* Ocupa a tela inteira para não espremer o conteúdo */
+        border-left: none;
+    }
+}
+
+
 /* =========================================
-   ESTILOS DO INTERRUPTOR (DARK MODE TOGGLE)
+   ESTILOS DO INTERRUPTOR E BOTÃO FECHAR
    ========================================= */
 .theme-switch {
   position: relative;
@@ -153,14 +206,12 @@ input:checked + .slider:before {
     font-size: 35px;  
     cursor: pointer; 
     align-self: flex-end; 
-    margin-bottom: 20px; 
+    margin-bottom: 30px; 
     padding: 0;
     line-height: 1; 
     transition: color 0.3s ease;
 }
 
-/* Comentário corrigido aqui! */
-/* a quando passar o dedo/mouse por cima */
 .close-btn:hover {
     color: #0C70F2; 
 }
@@ -169,19 +220,18 @@ input:checked + .slider:before {
    🌙 OVERRIDES DO DARK MODE (HEADER)
    ========================================= */
 .dark-mode header {
-    background-color: #1e293b; /* Fundo escuro moderno */
-    border-bottom: 1px solid #334155; /* Linha de separação sutil */
+    background-color: #1e293b; 
+    border-bottom: 1px solid #334155; 
 }
 
 .dark-mode nav a {
-    color: #f8fafc; /* Letras brancas no desktop */
+    color: #f8fafc; 
 }
 
 .dark-mode nav a:hover {
-    color: #3b82f6; /* Azul no hover */
+    color: #3b82f6; 
 }
 
-/* Ajusta o menu lateral do mobile para combinar com o novo tom de dark mode */
 @media (max-width: 768px) {
     .dark-mode nav {
         background-color: #0f172a;

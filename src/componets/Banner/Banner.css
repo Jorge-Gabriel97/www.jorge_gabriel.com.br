@@ -1,26 +1,100 @@
+/* =========================================
+   BANNER BASE (Desktop)
+   ========================================= */
 .banner {
     background-color: gray;
     background-position: center;
     background-size: cover;
-    height: 356px;
+    min-height: 356px; /* Alterado para min-height para maior flexibilidade */
     width: 100%;
+    
+    /* Flexbox para empurrar o title-panel sempre para a base do banner */
+    display: flex;
+    align-items: flex-end; 
+    justify-content: center;
 }
 
+/* O Painel de Título (Aba curva) */
 .title-panel {
     background-color: white;
-    color: #1D1D1D; /* Garante que o texto fique bem visível no modo claro */
+    color: #1D1D1D; 
     border-radius: 37px 37px 0 0;
+    
+    /* Flexbox para centralizar perfeitamente o texto dentro da aba */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
     font-size: 50px;
+    font-weight: bold; /* Adicionado para dar mais peso ao título */
     height: 150px;
-    margin:  0 auto;
+    width: 100%; /* Ocupa 100% até atingir o max-width */
     max-width: 500px;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave para o dark mode */
+    padding: 0 20px; /* Evita que o texto encoste nas bordas */
+    
+    transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* =========================================
+   📱 RESPONSIVIDADE (BANNER)
+   ========================================= */
+
+/* Laptops e Tablets (até 1024px) */
+@media (max-width: 1024px) {
+    .banner {
+        min-height: 300px; /* Reduz um pouco a altura da imagem */
+    }
+    .title-panel {
+        font-size: 42px;
+        height: 130px;
+        max-width: 450px;
+    }
+}
+
+/* Tablets em pé e Celulares deitados (até 768px) */
+@media (max-width: 768px) {
+    .banner {
+        min-height: 250px; 
+    }
+    .title-panel {
+        font-size: 36px;
+        height: 110px;
+        max-width: 400px;
+        border-radius: 30px 30px 0 0; /* Suaviza a curva para telas menores */
+    }
+}
+
+/* Celulares Padrão (até 568px) */
+@media (max-width: 568px) {
+    .banner {
+        min-height: 220px;
+    }
+    .title-panel {
+        font-size: 28px; /* Reduz a fonte para caber em telas estreitas */
+        height: 90px;
+        max-width: 90%; /* O painel agora ocupa quase a largura toda do celular */
+        border-radius: 25px 25px 0 0;
+    }
+}
+
+/* Celulares Bem Pequenos (até 375px) */
+@media (max-width: 375px) {
+    .banner {
+        min-height: 200px;
+    }
+    .title-panel {
+        font-size: 24px;
+        height: 80px;
+        max-width: 100%; /* Fica de ponta a ponta no celular minúsculo */
+        border-radius: 20px 20px 0 0;
+    }
 }
 
 /* =========================================
    🌙 OVERRIDES DO DARK MODE (BANNER)
    ========================================= */
 .dark-mode .title-panel {
-    background-color: #1e293b; /* O mesmo tom de cinza elegante do Header e do Footer */
-    color: #f8fafc; /* Texto branco gelo para dar um contraste perfeito */
+    background-color: #1e293b; 
+    color: #f8fafc; 
 }

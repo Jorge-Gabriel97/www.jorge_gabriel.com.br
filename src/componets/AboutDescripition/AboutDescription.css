@@ -1,76 +1,87 @@
-.text-section{    
+/* =========================================
+TEXT SECTION BASE (Desktop)
+   ========================================= */
+.text-section {    
+    display: flex; /* Obrigatório para o column-gap funcionar! */
+    flex-direction: row; /* Coloca imagem e texto lado a lado no PC */
+    align-items: center;
     column-gap: 97px;
     margin: 160px auto;
-    flex-direction: column;
+    padding: 0 5%; /* Evita que o conteúdo cole nas bordas da tela */
+    max-width: 1200px;
 }
 
-.text-section-text{
+.text-section-text {
     flex: 1;
 }
 
-.text-section-text h2{
+.text-section-text h2 {
     font-size: 50px;
-}
-/* --- Estilos do Texto Principal --- */
-.description-text {
-    font-size: 18px; /* Reduz um pouco o tamanho do parágrafo para não ficar gigante */
-    line-height: 1.6; /* Aumenta o espaço entre as linhas para facilitar a leitura */
-    margin-bottom: 40px; /* Dá um respiro antes de começar os ícones */
-    color: #4D5053; /* Um tom de cinza escuro para não cansar a vista */
+    color: #111; 
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
-/* --- Estilos da Seção de Tecnologias (Tech Stack) --- */
+.description-text, 
+.text-section-text p {    
+    font-size: 18px;   
+    line-height: 1.6; 
+    margin-bottom: 40px; 
+    color: #4D5053; 
+    transition: color 0.3s ease;
+}
+
+/* =========================================
+TECH STACK (Ícones)
+   ========================================= */
 .tech-stack h3 {
     font-size: 24px;
     margin-bottom: 20px;
     color: #292F36;
+    transition: color 0.3s ease;
 }
 
 .icons-container {
-    flex-wrap: wrap; /* Se não couber tudo na mesma linha, ele joga pra baixo automaticamente */
-    gap: 30px; /* Espaço entre cada ícone */
+    display: flex; /* Obrigatório para o wrap e o gap funcionarem! */
+    flex-wrap: wrap; 
+    gap: 30px; 
 }
 
 .tech-icon {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px; /* Espaço entre o ícone e o nome */
-    transition: transform 0.3s ease; /* Prepara a animação */
+    gap: 8px; 
+    transition: transform 0.3s ease; 
     cursor: pointer;
 }
 
 .tech-icon svg {
-    font-size: 45px; /* Tamanho do ícone */
+    font-size: 45px; 
+    transition: color 0.3s ease;
 }
 
 .tech-icon span {
     font-size: 14px;
     font-weight: 500;
     color: #292F36;
+    transition: color 0.3s ease;
 }
 
-/* Efeito de Hover: o ícone dá um pulinho pra cima quando passa o mouse */
 .tech-icon:hover {
     transform: translateY(-8px);
 }
 
-.text-section-text p{    
-    font-size: 18px;   
-}
+/* =========================================
+📱 RESPONSIVIDADE
+   ========================================= */
 
-.title-panel {
-    background-color: white;
-    border-radius: 37px 37px 0 0;
-    font-size: 30px;
-    height: 150px;
-    margin: 0 auto;
-    max-width: 500px;
-    text-align: center; /* Adicionamos isso aqui! */
-}
-
-@media (max-width: 768px) {
-.text-section{
-    flex-direction: column;    
+/* Laptops e Tablets (até 1024px) */
+@media (max-width: 1024px) {
+    .text-section {
+        column-gap: 50px;
+        margin: 120px auto; /* Reduz o buraco branco na tela */
     }
-}    
+    .text-section-text h2 {
+        font-size: 42px;
+}}
