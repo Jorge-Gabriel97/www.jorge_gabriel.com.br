@@ -23,33 +23,40 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 50px;
-    align-items: start; /* Impede que os cards estiquem a linha inteira */
+    align-items: start; /* ← isso já está certo */
 }
 
 .projetcs-card {
-    height: max-content; /* O card só cresce o necessário para o seu texto */
-    justify-content: flex-start; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 20px;
     width: 100%;
-    background-color: #fff; /* Fundo branco no tema claro */
+    /* SEM height fixa — cresce com o conteúdo */
+    background-color: #fff;
     border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Sombra super sutil e moderna */
-    transition: all 0.3s ease; /* Transição mágica para o modo escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
 .projetcs-card .thumb {
-    background-position: center;
-    background-size: cover;
-    border-radius: 20px; 
-    height: 220px; 
-    width: 100%;
+background-position: center;
+background-size: cover;
+  background-color: #e2e8f0;  /* fallback quando a imagem não carrega */
+border-radius: 12px;
+  height: 160px;              /* altura fixa — não muda se imagem falhar */
+width: 100%;
+  flex-shrink: 0;             /* nunca comprime */
 }
 
 .projetcs-card h3 {
-    font-size: 25px;
-    margin: 20px 0 10px 0;
-    color: #000;
-    transition: color 0.3s ease;
+  font-size: 18px;            /* reduzido para não quebrar linha no grid de 4 */
+margin: 16px 0 10px;
+color: #000;
+overflow: hidden;
+text-overflow: ellipsis;
+  white-space: nowrap;        /* título sempre em 1 linha */
+transition: color 0.3s ease;
 }
 
 /* --- Botão Ver Detalhes (Estilo Tema Claro) --- */
@@ -82,12 +89,13 @@
 
 /* --- Link do Repositório --- */
 .projetcs-card .repo-link {
-    margin-top: 15px; 
-    color: #0C70F2; 
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: color 0.3s ease;
+margin-top: auto;
+padding-top: 12px;
+color: #0C70F2;
+font-size: 16px;
+font-weight: 600;
+text-decoration: none;
+transition: color 0.3s ease;
 }
 
 .projetcs-card .repo-link:hover {
